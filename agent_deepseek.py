@@ -31,7 +31,7 @@ import feedparser
 import trafilatura
 from openai import OpenAI
 
-from db import init_schema, ArticleStore, make_article_id
+from db import make_article_id
 
 
 # ============================================================
@@ -639,30 +639,22 @@ def main():
         md_path = OUTPUT_DIR / f"news_{today}.md"
         json_path = OUTPUT_DIR / f"news_{today}.json"
         md_path.write_text(render_markdown(processed), encoding="utf-8")
+        json_data = [{
+            "id": make_article_id(p.link, p.title),
+            "date": today,
+            "source": p.source,
+            "title": p.title,
+            "link": p.link,
+            "summary": p.summary,
+            "key_points": p.key_points,
+            "opinion": p.opinion,
+            "score": p.score,
+        } for p in processed]
         json_path.write_text(
-            json.dumps([asdict(p) for p in processed], ensure_ascii=False, indent=2),
+            json.dumps(json_data, ensure_ascii=False, indent=2),
             encoding="utf-8",
         )
 
-        # 写入 articles 表,供 FastAPI API 读取
-        init_schema(DB_PATH)
-        store = ArticleStore(DB_PATH)
-        try:
-            for p in processed:
-                store.insert(
-                    id=make_article_id(p.link, p.title),
-                    date=today,
-                    source=p.source,
-                    title=p.title,
-                    link=p.link,
-                    summary=p.summary,
-                    key_points=p.key_points,
-                    opinion=p.opinion,
-                    score=p.score,
-                )
-            log.info("  -> %d 条写入 articles 表", len(processed))
-        finally:
-            store.close()
 
         # 标记成功加工的(失败的下次还能重试)
         # 用 link 反查 fingerprint,比 title 更稳
