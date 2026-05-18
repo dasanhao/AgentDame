@@ -46,6 +46,19 @@ app.add_middleware(
 @app.on_event("startup")
 def on_startup():
     init_schema(DB_PATH)
+    # 启动时从 GitHub 恢复数据库
+    if not DB_PATH.exists():
+        print(f"[api] 数据库不存在,从 GitHub 拉取...")
+        try:
+            subprocess.run(
+                ["git", "show", f"HEAD:{DB_PATH.name}"],
+                stdout=open(str(DB_PATH), "wb"),
+                check=True,
+                capture_output=True,
+            )
+            print(f"[api] 数据库已从 GitHub 恢复")
+        except Exception as e:
+            print(f"[api] 拉取失败: {e},用空库启动")
 
 
 # ============================================================
