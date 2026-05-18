@@ -31,6 +31,8 @@ import feedparser
 import trafilatura
 from openai import OpenAI
 
+from db import init_schema, ArticleStore, make_article_id
+
 
 # ============================================================
 # 配置区
@@ -642,6 +644,26 @@ def main():
             encoding="utf-8",
         )
 
+        # 写入 articles 表,供 FastAPI API 读取
+        init_schema(DB_PATH)
+        store = ArticleStore(DB_PATH)
+        try:
+            for p in processed:
+                store.insert(
+                    id=make_article_id(p.link, p.title),
+                    date=today,
+                    source=p.source,
+                    title=p.title,
+                    link=p.link,
+                    summary=p.summary,
+                    key_points=p.key_points,
+                    opinion=p.opinion,
+                    score=p.score,
+                )
+            log.info("  -> %d 条写入 articles 表", len(processed))
+        finally:
+            store.close()
+
         # 标记成功加工的(失败的下次还能重试)
         # 用 link 反查 fingerprint,比 title 更稳
         link_to_item = {it.link: it for it in top_items}
@@ -650,7 +672,7 @@ def main():
 
         log.info("  -> %s", md_path)
         log.info("  -> %s", json_path)
-        log.info("完成!共加工 %d 条,已记入去重库", len(processed))
+        log.info("完成!共加工 %d 条,已记入去重库和 articles 表", len(processed))
     finally:
         seen_store.close()
 
