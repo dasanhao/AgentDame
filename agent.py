@@ -107,7 +107,7 @@ PERSONA_PROMPT = """
 请基于给定的新闻原文,完成以下任务:
 1. 用一句话(50字内)概括核心事实
 2. 提炼 3 个关键要点(每条 30 字内)
-3. 给出 150-200 字的个人观点评论
+3. 给出 400-600 字的个人观点评论,分2-3段,从不同角度深入分析
 
 要求:
 - 评论必须基于原文,严禁编造未提及的事实
@@ -142,6 +142,7 @@ class NewsItem:
     published: str = ""
     summary: str = ""           # RSS 原文摘要(后备)
     full_text: str = ""         # 抓取的全文(优先用)
+    image_url: str = ""
 
     @property
     def fingerprint(self) -> str:
@@ -165,6 +166,7 @@ class ProcessedItem:
     key_points: List[str]
     opinion: str
     score: int = 0
+    image_url: str = ""
 
 
 # ============================================================
@@ -224,6 +226,44 @@ class SeenStore:
 # ============================================================
 # 模块 2: RSS 采集
 # ============================================================
+
+def extract_image_url(entry) -> str:
+    """从 RSS entry 提取文章封面图"""
+    # 1. og:image meta 标签 (大多数网站都有)
+    for tag in ["og:image", "twitter:image"]:
+        if hasattr(entry, 'get_value'):
+            url = entry.get_value(tag)
+            if url:
+                return url
+
+    # 2. media:content 或 media:thumbnail
+    for attr_name in ["media:content", "media:thumbnail", "enclosure"]:
+        if entry.get(attr_name):
+            val = entry[attr_name]
+            if isinstance(val, dict):
+                url = val.get("url", "")
+                if url and "image" in val.get("medium", "image"):
+                    return url
+            elif isinstance(val, list) and val:
+                v = val[0]
+                if isinstance(v, dict):
+                    return v.get("url", "")
+
+    # 3. 从 HTML summary/content 中找第一张图片
+    import re
+    for field in ["content", "summary"]:
+        html = entry.get(field, "")
+        if isinstance(html, list):
+            html = html[0].get("value", "") if html else ""
+        if html:
+            matches = re.findall(r'<img[^>]+src=["\']([^"\']+)["\']', html, re.I)
+            for m in matches:
+                if not any(x in m.lower() for x in ["logo", "icon", "avatar", "favicon"]):
+                    return m
+
+    # 4. 如果以上都失败，返回空
+    return ""
+
 
 def extract_entry_content(entry) -> str:
     """
@@ -314,12 +354,16 @@ def collect_news(seen_store: SeenStore) -> List[NewsItem]:
                 # 取最长正文字段(content:encoded > summary)
                 content = extract_entry_content(entry)[:FETCH_MAX_LEN]
 
+                # 提取文章封面图
+                image_url = extract_image_url(entry)
+
                 item = NewsItem(
                     source=feed["name"],
                     title=title,
                     link=entry.get("link", ""),
                     published=entry.get("published", ""),
                     summary=content,
+                    image_url=image_url,
                 )
 
                 # B3: 数据库去重
@@ -479,7 +523,19 @@ def enrich_with_full_text(items: List[NewsItem]) -> List[NewsItem]:
 
 
 # ============================================================
-# 模块 5: LLM 加工
+# 模块 5: AI 图片生成
+# ============================================================
+
+def generate_ai_image(title: str, summary: str) -> str:
+    """用 Pollinations.ai 免费生成文章配图"""
+    import urllib.parse
+    prompt = f"News illustration about: {title}. {summary[:100]}."
+    encoded = urllib.parse.quote(prompt)
+    return f"https://image.pollinations.ai/prompt/{encoded}?width=1024&height=512&nologo=true&seed={hash(title) % 999999}"
+
+
+# ============================================================
+# 模块 6: LLM 加工
 # ============================================================
 
 def make_client() -> OpenAI:
@@ -516,6 +572,7 @@ def process_with_llm(client: OpenAI, item: NewsItem) -> ProcessedItem:
         summary=data.get("summary", ""),
         key_points=data.get("key_points", []),
         opinion=data.get("opinion", ""),
+        image_url=item.image_url,
     )
 
 
@@ -659,14 +716,33 @@ def main():
         # 加工
         processed = process_all(client, top_items)
 
+        # 生成 AI 配图
+        log.info("生成 AI 配图...")
+        for i, p in enumerate(processed):
+            if not p.image_url:  # 没有网站封面图则生成 AI 图
+                p.image_url = generate_ai_image(p.title, p.summary)
+                log.info("  [%d/%d] AI生成: %s", i+1, len(processed), p.title[:30])
+
         # 输出
         log.info("[5/5] 生成输出文件...")
         today = datetime.date.today().isoformat()
         md_path = OUTPUT_DIR / f"news_{today}.md"
         json_path = OUTPUT_DIR / f"news_{today}.json"
         md_path.write_text(render_markdown(processed), encoding="utf-8")
+        json_data = [{
+            "id": make_article_id(p.link, p.title),
+            "date": today,
+            "source": p.source,
+            "title": p.title,
+            "link": p.link,
+            "summary": p.summary,
+            "key_points": p.key_points,
+            "opinion": p.opinion,
+            "score": p.score,
+            "image_url": p.image_url,
+        } for p in processed]
         json_path.write_text(
-            json.dumps([asdict(p) for p in processed], ensure_ascii=False, indent=2),
+            json.dumps(json_data, ensure_ascii=False, indent=2),
             encoding="utf-8",
         )
 

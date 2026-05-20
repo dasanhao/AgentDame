@@ -20,7 +20,7 @@ jobs:
       - name: Run DeepSeek Agent
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
-        run: python agent_deepseek.py
+        run: python agent.py
       - name: Commit output and database
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
