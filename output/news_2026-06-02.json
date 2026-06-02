@@ -1,18 +1,1 @@
-[
-  {
-    "id": "285e633abac6",
-    "date": "2026-06-02",
-    "source": "少数派",
-    "title": "得力管家还是多此一举？聊聊 macOS 后台进程管理工具 App Tamer",
-    "link": "https://sspai.com/prime/story/manage-macos-background-activities-with-app-tamer",
-    "summary": "App Tamer 是一款 macOS 后台进程管理工具，通过挂起、限速或限制核心运行来降低资源占用，适合多显示器或复杂应用场景。",
-    "key_points": [
-      "macOS 自带的 App Nap 机制对现代臃肿应用效果有限。",
-      "App Tamer 提供三种策略：完全停止、限制小核运行、CPU 占用限速。",
-      "通过发送 SIGSTOP/SIGCONT 信号或调整 QoS 优先级实现管控。"
-    ],
-    "opinion": "App Tamer 的出现，本质上是对 macOS 自身后台管理机制不足的一种补充。苹果的 App Nap 设计初衷是好的，但面对 Electron 应用、复杂网页和后台轮询等现代软件生态，显得力不从心。尤其对于多显示器用户，系统判定“后台”的应用减少，导致自动调度失效，App Tamer 的第三方干预就有了实际价值。\n\n从技术实现看，App Tamer 利用 Unix 信号和 QoS 机制，思路清晰且侵入性低。SIGSTOP/SIGCONT 的交替使用来控制 CPU 占用率，是一种轻量级的限流手段；而限制线程到效率核心，则充分利用了 Apple Silicon 的大小核架构。不过，这种基于信号的方法并非没有风险：频繁的信号切换可能引发应用不稳定或数据同步问题，尤其对于需要实时响应的应用（如视频会议），挂起后恢复可能造成卡顿或连接中断。\n\n总体而言，App Tamer 是一个针对特定痛点的工具，而非通用优化方案。对于普通用户，macOS 的默认调度已足够；但对于重度多任务、多显示器或使用大量 Electron 应用的用户，它能有效降低后台资源占用，延长电池续航。然而，用户需谨慎配置，避免过度干预导致应用行为异常。长期来看，苹果应改进 App Nap 的豁免逻辑，或提供更细粒度的后台权限控制，以减少对第三方工具的依赖。",
-    "score": 0,
-    "image_url": "https://image.pollinations.ai/prompt/News%20illustration%20about%3A%20%E5%BE%97%E5%8A%9B%E7%AE%A1%E5%AE%B6%E8%BF%98%E6%98%AF%E5%A4%9A%E6%AD%A4%E4%B8%80%E4%B8%BE%EF%BC%9F%E8%81%8A%E8%81%8A%20macOS%20%E5%90%8E%E5%8F%B0%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7%20App%20Tamer.%20App%20Tamer%20%E6%98%AF%E4%B8%80%E6%AC%BE%20macOS%20%E5%90%8E%E5%8F%B0%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7%EF%BC%8C%E9%80%9A%E8%BF%87%E6%8C%82%E8%B5%B7%E3%80%81%E9%99%90%E9%80%9F%E6%88%96%E9%99%90%E5%88%B6%E6%A0%B8%E5%BF%83%E8%BF%90%E8%A1%8C%E6%9D%A5%E9%99%8D%E4%BD%8E%E8%B5%84%E6%BA%90%E5%8D%A0%E7%94%A8%EF%BC%8C%E9%80%82%E5%90%88%E5%A4%9A%E6%98%BE%E7%A4%BA%E5%99%A8%E6%88%96%E5%A4%8D%E6%9D%82%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%E3%80%82.?width=1024&height=512&nologo=true&seed=605084"
-  }
-]
+[]
