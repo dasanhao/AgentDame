@@ -1,18 +1,1 @@
-[
-  {
-    "id": "cdf9b573acde",
-    "date": "2026-06-08",
-    "source": "少数派",
-    "title": "Liquid Glass 精调、Apple 智能大升级：WWDC26 发布会回顾",
-    "link": "https://sspai.com/post/110888",
-    "summary": "WWDC26发布会以性能优化、儿童安全和Apple智能升级为主轴，推出Liquid Glass设计更新、系统性能提升及Siri AI全面重构。",
-    "key_points": [
-      "Liquid Glass设计引入调节滑块，改善可读性与层级效果。",
-      "系统性能优化：app启动速度提升30%，AirDrop速度提升80%。",
-      "Siri AI重构：支持屏幕感知、写作工具及跨设备对话记录。"
-    ],
-    "opinion": "WWDC26的Keynote呈现出Apple在系统设计上的成熟与克制。Liquid Glass的微调更多是细节完善而非颠覆，调节滑块的引入体现了对用户偏好的尊重，但设计语言本身已进入平稳迭代期。性能优化方面，Apple再次强调底层效率，尤其是老设备也能受益的CPU调度器改进，这延续了iOS 12以来的务实策略——在硬件升级放缓的背景下，软件优化成为提升用户体验的关键。儿童安全功能的全面升级值得关注，从内容过滤到时间管理，Apple正构建更严格的家长控制生态，但这也引发隐私与自由度的平衡问题：过度保护是否会限制青少年的数字探索？API的开放为开发者提供了合规框架，但实际效果仍需观察。\n\nApple智能与Siri AI的升级无疑是本次发布会的核心。新架构引入Google的Gemini技术，但强调本地与云端结合，这既是对隐私承诺的坚守，也是对算力瓶颈的妥协。Siri AI的屏幕感知和写作工具功能看似强大，但实际体验取决于上下文理解的准确性——AI的“幻觉”问题尚未解决，用户可能面临误读或过度推荐。此外，Siri独立应用的引入虽便于回溯对话，但也可能增加信息过载风险。Apple在AI领域的追赶姿态明显，但相比竞争对手的激进策略，其渐进式整合更符合品牌调性。长期来看，Apple智能能否成为生态黏合剂，取决于第三方应用的适配深度与用户信任的建立。",
-    "score": 0,
-    "image_url": "https://image.pollinations.ai/prompt/News%20illustration%20about%3A%20Liquid%20Glass%20%E7%B2%BE%E8%B0%83%E3%80%81Apple%20%E6%99%BA%E8%83%BD%E5%A4%A7%E5%8D%87%E7%BA%A7%EF%BC%9AWWDC26%20%E5%8F%91%E5%B8%83%E4%BC%9A%E5%9B%9E%E9%A1%BE.%20WWDC26%E5%8F%91%E5%B8%83%E4%BC%9A%E4%BB%A5%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E3%80%81%E5%84%BF%E7%AB%A5%E5%AE%89%E5%85%A8%E5%92%8CApple%E6%99%BA%E8%83%BD%E5%8D%87%E7%BA%A7%E4%B8%BA%E4%B8%BB%E8%BD%B4%EF%BC%8C%E6%8E%A8%E5%87%BALiquid%20Glass%E8%AE%BE%E8%AE%A1%E6%9B%B4%E6%96%B0%E3%80%81%E7%B3%BB%E7%BB%9F%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87%E5%8F%8ASiri%20AI%E5%85%A8%E9%9D%A2%E9%87%8D%E6%9E%84%E3%80%82.?width=1024&height=512&nologo=true&seed=456135"
-  }
-]
+[]
