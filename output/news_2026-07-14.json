@@ -1,18 +1,18 @@
 [
   {
-    "id": "a0a5322cf8e5",
+    "id": "59534b5bd91c",
     "date": "2026-07-14",
     "source": "少数派",
-    "title": "iOS / iPadOS 27 Public Beta 公测版来了：升降级指南 & 注意事项",
-    "link": "https://sspai.com/post/112288",
-    "summary": "苹果推送iOS 27等公测版，提供升降级指南，建议主力设备谨慎升级。",
+    "title": "具透 | iOS 27 首个公开测试版来了，这些是值得你关注的新功能",
+    "link": "https://sspai.com/post/112287",
+    "summary": "苹果发布iOS 27公开测试版，新增Liquid Glass透明度调节、AirPods自定义EQ、Safari内容监测、AI增强照片编辑等功能，国行暂不支持AI。",
     "key_points": [
-      "iOS 27支持iPhone 11及后续机型，iPadOS支持2020年后设备。",
-      "升级前需备份数据，推荐有线连接和加密本地备份。",
-      "降级需进入恢复模式，Apple Watch需官方协助降级。"
+      "Liquid Glass新增透明度滑杆，用户可自定义效果强度。",
+      "AirPods支持自定义EQ和自适应模式滑块调节。",
+      "Safari新增页面内容监测提醒和AI分类分组功能。"
     ],
-    "opinion": "苹果此次公测版推送延续了其一贯的节奏，旨在让开发者和发烧友提前适应新功能。然而，文章反复强调的“不推荐主力设备升级”值得注意，这反映了测试版系统固有的不稳定性。从用户角度，备份和降级指南虽详尽，但操作门槛仍较高，尤其是Apple Watch需前往Apple Store降级，凸显了测试版对普通用户的不友好。\n\n从行业视角看，苹果对设备兼容性的严格限制（如macOS仅支持Apple Silicon）进一步加速了旧硬件淘汰，这虽能推动生态统一，但可能引发用户对计划性报废的担忧。同时，visionOS缺席公测版，暗示其生态尚不成熟。\n\n总体而言，公测版是双刃剑：对技术爱好者是尝鲜机会，但对普通用户风险大于收益。苹果应优化降级流程，降低用户试错成本，同时平衡创新与稳定性。",
+    "opinion": "iOS 27的更新体现了苹果在系统个性化与智能化上的持续探索。Liquid Glass透明度滑杆的加入，是对用户反馈的积极回应，将视觉风格的选择权交还给用户，这比强制推行统一设计更显成熟。AirPods的自定义EQ和自适应模式滑块，则进一步提升了音频体验的灵活性，让用户从被动接受转向主动调节。\n\n然而，AI功能的区域限制再次凸显了技术落地的现实挑战。Apple Intelligence和Siri AI在国行设备上的缺失，使得国内用户无法体验照片重构、自然语义输入等亮点功能。这不仅是技术问题，更是数据合规与本地化策略的博弈。苹果需要加快与监管机构的协调，否则在AI竞争中将落后于本土厂商。\n\n总体而言，iOS 27在细节打磨上值得肯定，但AI功能的割裂可能影响用户体验的一致性。苹果应优先解决区域限制，确保全球用户能平等享受技术进步。同时，用户也需理性看待测试版的稳定性，避免因尝鲜而影响日常使用。",
     "score": 0,
-    "image_url": "https://image.pollinations.ai/prompt/News%20illustration%20about%3A%20iOS%20/%20iPadOS%2027%20Public%20Beta%20%E5%85%AC%E6%B5%8B%E7%89%88%E6%9D%A5%E4%BA%86%EF%BC%9A%E5%8D%87%E9%99%8D%E7%BA%A7%E6%8C%87%E5%8D%97%20%26%20%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.%20%E8%8B%B9%E6%9E%9C%E6%8E%A8%E9%80%81iOS%2027%E7%AD%89%E5%85%AC%E6%B5%8B%E7%89%88%EF%BC%8C%E6%8F%90%E4%BE%9B%E5%8D%87%E9%99%8D%E7%BA%A7%E6%8C%87%E5%8D%97%EF%BC%8C%E5%BB%BA%E8%AE%AE%E4%B8%BB%E5%8A%9B%E8%AE%BE%E5%A4%87%E8%B0%A8%E6%85%8E%E5%8D%87%E7%BA%A7%E3%80%82.?width=1024&height=512&nologo=true&seed=599090"
+    "image_url": "https://image.pollinations.ai/prompt/News%20illustration%20about%3A%20%E5%85%B7%E9%80%8F%20%7C%20iOS%2027%20%E9%A6%96%E4%B8%AA%E5%85%AC%E5%BC%80%E6%B5%8B%E8%AF%95%E7%89%88%E6%9D%A5%E4%BA%86%EF%BC%8C%E8%BF%99%E4%BA%9B%E6%98%AF%E5%80%BC%E5%BE%97%E4%BD%A0%E5%85%B3%E6%B3%A8%E7%9A%84%E6%96%B0%E5%8A%9F%E8%83%BD.%20%E8%8B%B9%E6%9E%9C%E5%8F%91%E5%B8%83iOS%2027%E5%85%AC%E5%BC%80%E6%B5%8B%E8%AF%95%E7%89%88%EF%BC%8C%E6%96%B0%E5%A2%9ELiquid%20Glass%E9%80%8F%E6%98%8E%E5%BA%A6%E8%B0%83%E8%8A%82%E3%80%81AirPods%E8%87%AA%E5%AE%9A%E4%B9%89EQ%E3%80%81Safari%E5%86%85%E5%AE%B9%E7%9B%91%E6%B5%8B%E3%80%81AI%E5%A2%9E%E5%BC%BA%E7%85%A7%E7%89%87%E7%BC%96%E8%BE%91%E7%AD%89%E5%8A%9F%E8%83%BD%EF%BC%8C%E5%9B%BD%E8%A1%8C%E6%9A%82%E4%B8%8D%E6%94%AF%E6%8C%81AI%E3%80%82.?width=1024&height=512&nologo=true&seed=938960"
   }
 ]
