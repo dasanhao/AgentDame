@@ -1,0 +1,18 @@
+[
+  {
+    "id": "8c160e15b10c",
+    "date": "2026-08-23",
+    "source": "少数派",
+    "title": "让 PC 与 HomePod 互联：音频串流工具 WinAirCast",
+    "link": "https://sspai.com/post/113002",
+    "summary": "WinAirCast是一款用Rust编写的Windows音频串流工具，支持AirPlay 2，实现低延迟连接HomePod等设备。",
+    "key_points": [
+      "WinAirCast支持AirPlay 2和1，延迟低至45ms，兼容多设备同步。",
+      "提供单应用捕获、DRM穿透、静音待机等高级功能。",
+      "一次买断制，15天免费试用，已在Microsoft Store上架。"
+    ],
+    "opinion": "WinAirCast的推出，精准地切中了Windows与苹果生态割裂的痛点。对于同时拥有PC和HomePod的用户而言，音频串流一直是体验上的短板。此产品以Rust重写底层协议，不仅解决了传统软件的延迟和兼容性问题，更通过支持AirPlay 2实现了多设备同步，这体现了技术上的务实创新。然而，其价值不仅在于填补空白，更在于它是否能在长期内保持稳定和持续更新。买断制虽对用户友好，但后续维护和系统更新适配的持续性，将是决定其能否成为可靠工具的关键。\n\n从更宏观的角度看，WinAirCast反映了用户对跨生态无缝体验的普遍需求。在智能设备日益多元的今天，封闭生态间的壁垒常被诟病，而此类工具正是对开放互联的积极尝试。但我们也应警惕，依赖第三方软件解决互联问题，可能带来安全性和隐私风险。例如，DRM穿透功能虽便利，却可能涉及版权合规问题。因此，用户在使用时需权衡便利与风险，而开发者则应确保合规性，避免游走于灰色地带。\n\n总体而言，WinAirCast是一款有诚意的产品，它在功能上超越了同类工具，且定价合理。但它的长期价值，取决于开发团队能否持续优化，以及用户对第三方工具的信任程度。在技术快速迭代的当下，任何解决方案都需不断进化，才能保持其不可替代性。",
+    "score": 0,
+    "image_url": "https://image.pollinations.ai/prompt/News%20illustration%20about%3A%20%E8%AE%A9%20PC%20%E4%B8%8E%20HomePod%20%E4%BA%92%E8%81%94%EF%BC%9A%E9%9F%B3%E9%A2%91%E4%B8%B2%E6%B5%81%E5%B7%A5%E5%85%B7%20WinAirCast.%20WinAirCast%E6%98%AF%E4%B8%80%E6%AC%BE%E7%94%A8Rust%E7%BC%96%E5%86%99%E7%9A%84Windows%E9%9F%B3%E9%A2%91%E4%B8%B2%E6%B5%81%E5%B7%A5%E5%85%B7%EF%BC%8C%E6%94%AF%E6%8C%81AirPlay%202%EF%BC%8C%E5%AE%9E%E7%8E%B0%E4%BD%8E%E5%BB%B6%E8%BF%9F%E8%BF%9E%E6%8E%A5HomePod%E7%AD%89%E8%AE%BE%E5%A4%87%E3%80%82.?width=1024&height=512&nologo=true&seed=937809"
+  }
+]
